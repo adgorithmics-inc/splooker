@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 
 EMPTY_CONFIG = {
     "start_port": 8000,
-    "current_port": 8001,
+    "current_port": 8000,
     "max_ports": 10,
     "containers": {}
 }
