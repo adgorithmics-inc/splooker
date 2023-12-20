@@ -127,7 +127,7 @@ def run(name):
     if not os.path.exists(config_path):
         raise ValueError(f"Configuration {config_path} not found")
 
-    configuration = load_json(config_path)
+    service_config = load_json(config_path)
 
     port = get_free_port()
 
@@ -141,9 +141,9 @@ def run(name):
     docker_id = run_docker_command(
         name=name,
         port=port,
-        image=configuration["image"],
-        command=configuration["command"],
-        docker_args=configuration["docker_args"]
+        image=service_config["image"],
+        command=service_config["command"],
+        docker_args=service_config["docker_args"]
     )
 
     max_retries = settings.get("max_retries")
@@ -168,7 +168,8 @@ def run(name):
 
     config["containers"][name] = {
         "id": docker_id,
-        "port": port
+        "port": port,
+        "applied_config": service_config
     }
     config["current_port"] = port
 
