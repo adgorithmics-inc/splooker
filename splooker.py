@@ -73,7 +73,7 @@ def run_docker_command(name, port, image, command, docker_args=None):
 
     uid = str(uuid.uuid4()).split("-")[0]
     name = f"{name}-{uid}"
-    command_args = ["docker", "run", *docker_args, "-d", "--name", name, image, *command]
+    command_args = ["docker", "run", *docker_args, "-d", "--restart", "always", "--name", name, image, *command]
     docker_cmd = subprocess.run(command_args, capture_output=True, text=True)
 
     if docker_cmd.returncode > 0:

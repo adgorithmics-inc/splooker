@@ -23,8 +23,8 @@ Automatically Splooker will create an upstream for nginx with the name of your s
 in the above example it would create an upstream called `api`
 
 ```text
-upstream api { 
-    server localhost:8005; 
+upstream api {
+    server localhost:8000; 
 }
 ```
 
